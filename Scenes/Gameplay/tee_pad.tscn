@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cbcxqty60ldli"]
+
+[node name="TeePad" type="StaticBody2D" unique_id=1332419626]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=690168817]
+offset_left = 422.0
+offset_top = 475.0
+offset_right = 477.0
+offset_bottom = 608.0
+color = Color(0.012617188, 0.012617188, 0.012617188, 1)
