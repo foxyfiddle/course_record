@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://cnbpi0od80omq"]
+
+[ext_resource type="Script" uid="uid://drhgf4a1vhbpn" path="res://Scripts/Gameplay/DiscController.cs" id="1_osm14"]
+
+[node name="Disc" type="CharacterBody2D" unique_id=1470413384]
+script = ExtResource("1_osm14")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1266311778]
+offset_right = 19.0
+offset_bottom = 7.0
+color = Color(1, 0.24705882, 1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1733373249]

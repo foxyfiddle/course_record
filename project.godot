@@ -11,7 +11,8 @@ config_version=5
 [application]
 
 config/name="course-record"
-config/features=PackedStringArray("4.6", "Forward Plus")
+run/main_scene="uid://0ufybvogm6q5"
+config/features=PackedStringArray("4.6", "C#", "Forward Plus")
 
 [dotnet]
 

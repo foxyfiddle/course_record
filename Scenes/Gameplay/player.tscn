@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://bv037ermy0sts"]
 
+[ext_resource type="Script" uid="uid://b64kqhwa4byv8" path="res://Scripts/Gameplay/Player.cs" id="1_ilvae"]
+[ext_resource type="PackedScene" uid="uid://cnbpi0od80omq" path="res://Scenes/Gameplay/disc.tscn" id="2_7aclg"]
+
 [node name="Player" type="CharacterBody2D" unique_id=117549667]
+script = ExtResource("1_ilvae")
+DiscScene = ExtResource("2_7aclg")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1579101599]
 offset_right = 22.0
