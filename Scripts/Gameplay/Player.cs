@@ -7,7 +7,7 @@ public partial class Player : CharacterBody2D
 
 	public override void _Input(InputEvent @event)
 	{
-		if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed &&
+		if (@event is InputEventMouseButton mouseEvent && 
 			mouseEvent.Pressed &&
 			mouseEvent.ButtonIndex == MouseButton.Left)
 		{
@@ -24,7 +24,9 @@ public partial class Player : CharacterBody2D
 
 		discInstance.GlobalPosition = GlobalPosition;
 		discInstance.Direction = direction;
+		discInstance.Speed = 500f; // Set the speed for the disc
 
 		GetParent().AddChild(discInstance);
+		discInstance.Launch(direction, (mousePosition - GlobalPosition).Length());
 	}
 }
