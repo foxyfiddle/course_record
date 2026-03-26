@@ -3,16 +3,16 @@ using System;
 
 public partial class DiscController : CharacterBody2D
 {
-	public Vector2 Direction;
-	public float Speed = 500f;
-
+	private Vector2 direction = Vector2.Zero;
+	private float Speed = 0f;
 	private float remainingDistance = 0f;
 	private bool isLaunched = false;
 
-	public void Launch(Vector2 direction, float distance)
+	public void Launch(Vector2 launchDirection, float launchDistance, float launchSpeed)
 	{
-		Direction = direction;
-		remainingDistance = distance;
+		direction = launchDirection.Normalized();
+		remainingDistance = launchDistance;
+		Speed = launchSpeed;
 		isLaunched = true;
 	}
 
@@ -23,12 +23,12 @@ public partial class DiscController : CharacterBody2D
 		if (!isLaunched)
 			return;
 
-		float moveAmount = Speed * (float)delta;
+		float frameDistance = Speed * (float)delta;
 
 		// If this frame would overshoot, clamp to the remaining distance
-		if (moveAmount > remainingDistance)
+		if (frameDistance > remainingDistance)
 		{
-			Velocity = Direction * (remainingDistance / (float)delta);
+			Velocity = direction * (remainingDistance / (float)delta);
 			MoveAndSlide();
 
 			// Stop movement
@@ -38,9 +38,9 @@ public partial class DiscController : CharacterBody2D
 			return;
 		}
 
-		Velocity = Direction * Speed;
+		Velocity = direction * Speed;
 		MoveAndSlide();
 
-		remainingDistance -= moveAmount;
+		remainingDistance -= frameDistance;
 	}
 }
