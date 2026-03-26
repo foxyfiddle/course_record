@@ -1,12 +1,26 @@
 [gd_scene format=3 uid="uid://b0j1kivs23ull"]
 
+[ext_resource type="Script" uid="uid://beh7x33aljbko" path="res://Scripts/Gameplay/BasketArea2d.cs" id="1_ca1mq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oeds7"]
+radius = 27.0
+height = 78.0
+
 [node name="Basket" type="StaticBody2D" unique_id=301990488]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1051593352]
+[node name="Area2D" type="Area2D" parent="." unique_id=351853447]
+script = ExtResource("1_ca1mq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=115599436]
+z_index = 1
+position = Vector2(120, 97)
+shape = SubResource("CapsuleShape2D_oeds7")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1625601264]
 offset_left = 105.0
 offset_top = 75.0
-offset_right = 118.0
+offset_right = 136.0
 offset_bottom = 119.0
 color = Color(0.84010637, 0.20696613, 0, 1)
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
