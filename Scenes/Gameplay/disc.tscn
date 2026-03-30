@@ -1,20 +1,47 @@
 [gd_scene format=3 uid="uid://cnbpi0od80omq"]
 
 [ext_resource type="Script" uid="uid://drhgf4a1vhbpn" path="res://Scripts/Gameplay/DiscController.cs" id="1_osm14"]
+[ext_resource type="Texture2D" uid="uid://c285oi4xbued" path="res://Assets/Art/Frame1.png" id="2_v30gb"]
+[ext_resource type="Texture2D" uid="uid://s3bb0re5trq8" path="res://Assets/Art/Frame2.png" id="3_ewpxk"]
+[ext_resource type="Texture2D" uid="uid://quibbuqi68c3" path="res://Assets/Art/Frame3.png" id="4_7uqr5"]
+[ext_resource type="Texture2D" uid="uid://3mhhe7dgjm46" path="res://Assets/Art/Frame4.png" id="5_i2xam"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_osm14"]
-radius = 5.0
-height = 22.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v30gb"]
+radius = 6.0000005
+height = 28.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nor2b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v30gb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ewpxk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7uqr5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_i2xam")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}]
 
 [node name="Disc" type="CharacterBody2D" unique_id=1470413384]
 script = ExtResource("1_osm14")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1266311778]
-offset_right = 19.0
-offset_bottom = 7.0
-color = Color(1, 0.24705882, 1, 1)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1733373249]
+z_index = 1
 position = Vector2(9, 4)
 rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_osm14")
+shape = SubResource("CapsuleShape2D_v30gb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=535146668]
+position = Vector2(9, 4)
+scale = Vector2(0.08083834, 0.08083832)
+sprite_frames = SubResource("SpriteFrames_nor2b")
+animation = &"fly"
+frame_progress = 0.037968896
