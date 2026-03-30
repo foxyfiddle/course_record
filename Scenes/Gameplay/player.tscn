@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://b64kqhwa4byv8" path="res://Scripts/Gameplay/Player.cs" id="1_ilvae"]
 [ext_resource type="PackedScene" uid="uid://cnbpi0od80omq" path="res://Scenes/Gameplay/disc.tscn" id="2_7aclg"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7aclg"]
+
 [node name="Player" type="CharacterBody2D" unique_id=117549667]
 script = ExtResource("1_ilvae")
 DiscScene = ExtResource("2_7aclg")
@@ -11,3 +13,12 @@ DiscScene = ExtResource("2_7aclg")
 offset_right = 22.0
 offset_bottom = 22.0
 color = Color(0.07450981, 0.039215688, 1, 1)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1967572793]
+zoom = Vector2(0.595, 0.595)
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1538590664]
+position = Vector2(11, 11)
+shape = SubResource("RectangleShape2D_7aclg")
