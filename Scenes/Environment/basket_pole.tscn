@@ -3,6 +3,6 @@
 [node name="basketPole" type="Node2D" unique_id=1439819802]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=295641060]
-offset_right = 8.0
-offset_bottom = 40.0
+offset_right = 32.0
+offset_bottom = 124.0
 color = Color(0.6872149, 0.68721503, 0.6872149, 1)

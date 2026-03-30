@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://3mhhe7dgjm46" path="res://Assets/Art/Frame4.png" id="5_i2xam"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v30gb"]
-radius = 6.0000005
-height = 28.0
+radius = 11.999999
+height = 46.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nor2b"]
 animations = [{
@@ -35,13 +35,13 @@ script = ExtResource("1_osm14")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1733373249]
 z_index = 1
-position = Vector2(9, 4)
+position = Vector2(25, 12)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_v30gb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=535146668]
-position = Vector2(9, 4)
-scale = Vector2(0.08083834, 0.08083832)
+position = Vector2(24.000008, 12)
+scale = Vector2(0.13697608, 0.13697605)
 sprite_frames = SubResource("SpriteFrames_nor2b")
 animation = &"fly"
 frame_progress = 0.037968896
