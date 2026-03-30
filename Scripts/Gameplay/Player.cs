@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 
 public partial class Player : CharacterBody2D
 {
+	// variables for disc throwing
 	[Export] public PackedScene DiscScene;
 	[Export] private float chargeRate = 300f;
 	[Export] private float MaxPower = 400f;
@@ -14,6 +15,14 @@ public partial class Player : CharacterBody2D
 	private bool isCharging = false;
 	private float currectLaunchPower = 0f;
 
+	// variables for player movement
+	[Export] private float MaxSpeed = 200f;
+	[Export] private float Acceleration = 500f;
+	[Export] private float Friction = 600f;
+	private Vector2 _inputDirection = Vector2.Zero;
+
+
+	// player input handling
 	public override void _Input(InputEvent @event)
 {
 	if (@event is not InputEventMouseButton mouseEvent)
@@ -28,6 +37,35 @@ public partial class Player : CharacterBody2D
 		ReleaseThrow();
 }
 
+	// player movement handling
+	public override void _PhysicsProcess(double delta)
+	{
+		ReadInput();
+		ApplyMovement((float)delta);
+
+		MoveAndSlide();
+	}
+
+	// player movement logic
+	private void ReadInput()
+	{
+		_inputDirection = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
+	}
+
+	private void ApplyMovement(float delta)
+	{
+		if (_inputDirection != Vector2.Zero)
+		{
+			Vector2 targetVelocity = _inputDirection * MaxSpeed;
+			Velocity = Velocity.MoveToward(targetVelocity, Acceleration * delta);
+		}
+		else
+		{
+			Velocity = Velocity.MoveToward(Vector2.Zero, Friction * delta);
+		}
+	}
+
+	// charging logic
 	public override void _Process(double delta)
 	{
 		if (!isCharging)
@@ -39,6 +77,7 @@ public partial class Player : CharacterBody2D
 		GD.Print($"Charging... Current Power: {currectLaunchPower}");
 	}
 
+// player throwing logic
 	private void StartCharging()
 	{
 		isCharging = true;
