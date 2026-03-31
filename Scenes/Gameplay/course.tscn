@@ -10,7 +10,7 @@
 [node name="Player" parent="." unique_id=117549667 instance=ExtResource("1_s86k2")]
 z_index = 10
 position = Vector2(316, 946)
-MaxPower = 600.0
+MaxPower = 1000.0
 
 [node name="Basket" parent="." unique_id=301990488 instance=ExtResource("2_f1joc")]
 z_index = 1
