@@ -9,6 +9,8 @@ height = 154.0
 [node name="Basket" type="StaticBody2D" unique_id=301990488]
 
 [node name="Area2D" type="Area2D" parent="." unique_id=351853447]
+collision_layer = 8
+collision_mask = 2
 script = ExtResource("1_ca1mq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=115599436]
