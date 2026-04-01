@@ -21,6 +21,7 @@ public partial class Player : CharacterBody2D
 	[Export] private float Acceleration = 500f;
 	[Export] private float Friction = 600f;
 	private Vector2 _inputDirection = Vector2.Zero;
+	private bool canMove = false;
 
 
 	// player input handling
@@ -41,6 +42,12 @@ public partial class Player : CharacterBody2D
 		ReleaseThrow();
 }
 
+	// player pickup handling
+	void _on_area_2d_body_entered(Node body)
+	{
+		PickupDisc(body);
+	}
+
 	// player movement handling
 	public override void _PhysicsProcess(double delta)
 	{
@@ -58,7 +65,7 @@ public partial class Player : CharacterBody2D
 
 	private void ApplyMovement(float delta)
 	{
-		if (_inputDirection != Vector2.Zero)
+		if (canMove && _inputDirection != Vector2.Zero)
 		{
 			Vector2 targetVelocity = _inputDirection * MaxSpeed;
 			Velocity = Velocity.MoveToward(targetVelocity, Acceleration * delta);
@@ -95,6 +102,7 @@ public partial class Player : CharacterBody2D
 
 		isCharging = false;
 		hasDisc = false;
+		canMove = true;
 		ThrowDisc(currectLaunchPower);
 	}
 
@@ -112,14 +120,14 @@ public partial class Player : CharacterBody2D
 	}
 
 	// player pickup logic
-	void _on_area_2d_body_entered(Node body)
+	void PickupDisc(Node body)
 	{
-		GD.Print("Body entered: " + body.Name);
 		if (body is DiscController disc 
 			&& !hasDisc
 			&& disc.isStationary == true)
 		{
 			hasDisc = true;
+			canMove = false;
 			disc.QueueFree();
 			GD.Print("Disc picked up!");
 		}
