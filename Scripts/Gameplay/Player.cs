@@ -37,7 +37,7 @@ public partial class Player : CharacterBody2D
 		if (hasDisc)
 			StartCharging();
 		else
-			GD.Print("No disc to throw!");
+			return;
 	else
 		ReleaseThrow();
 }
@@ -84,8 +84,6 @@ public partial class Player : CharacterBody2D
 		
 		currectLaunchPower += chargeRate * (float)delta;
 		currectLaunchPower = Mathf.Clamp(currectLaunchPower, MinPower, MaxPower);
-
-		GD.Print($"Charging... Current Power: {currectLaunchPower}");
 	}
 
 // player throwing logic
@@ -102,6 +100,7 @@ public partial class Player : CharacterBody2D
 
 		isCharging = false;
 		hasDisc = false;
+		GameManager.Instance.AddStroke();
 		canMove = true;
 		ThrowDisc(currectLaunchPower);
 	}
@@ -129,7 +128,6 @@ public partial class Player : CharacterBody2D
 			hasDisc = true;
 			canMove = false;
 			disc.QueueFree();
-			GD.Print("Disc picked up!");
 		}
 	}
 }

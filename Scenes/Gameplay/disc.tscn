@@ -30,6 +30,7 @@ animations = [{
 }]
 
 [node name="Disc" type="CharacterBody2D" unique_id=1470413384]
+position = Vector2(0, -1)
 collision_layer = 2
 script = ExtResource("1_osm14")
 
