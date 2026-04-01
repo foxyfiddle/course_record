@@ -7,7 +7,8 @@ public partial class BasketArea2d : Area2D
 	{
 		if (body is DiscController disc)
 		{
-			GD.Print(body.Name + " entered the basket area!");
+			disc.QueueFree();
+			GD.Print("Goal!");
 		}
 	}
 }

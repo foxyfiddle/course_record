@@ -3,21 +3,15 @@
 [ext_resource type="PackedScene" uid="uid://bv037ermy0sts" path="res://Scenes/Gameplay/player.tscn" id="1_s86k2"]
 [ext_resource type="PackedScene" uid="uid://b0j1kivs23ull" path="res://Scenes/Gameplay/basket.tscn" id="2_f1joc"]
 [ext_resource type="PackedScene" uid="uid://cbcxqty60ldli" path="res://Scenes/Gameplay/tee_pad.tscn" id="3_52tr2"]
-[ext_resource type="PackedScene" uid="uid://ctr11frayg2yy" path="res://Scenes/Environment/basket_pole.tscn" id="4_f1joc"]
 
 [node name="Course" type="Node2D" unique_id=554295783]
 
 [node name="Player" parent="." unique_id=117549667 instance=ExtResource("1_s86k2")]
-z_index = 10
-position = Vector2(316, 946)
+position = Vector2(316, 890)
 MaxPower = 1000.0
 
 [node name="Basket" parent="." unique_id=301990488 instance=ExtResource("2_f1joc")]
-z_index = 1
 position = Vector2(307, -194)
 
 [node name="TeePad" parent="." unique_id=1332419626 instance=ExtResource("3_52tr2")]
 position = Vector2(-134, 430)
-
-[node name="basketPole" parent="." unique_id=1439819802 instance=ExtResource("4_f1joc")]
-position = Vector2(338, -71)
