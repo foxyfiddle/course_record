@@ -9,6 +9,7 @@ public partial class DiscController : CharacterBody2D
 	private float remainingDistance = 0f;
 	private float totalDistance = 0f;
 	private bool isLaunched = false;
+	public bool isStationary = true;
 
 	// variables for disc animation
 	private AnimatedSprite2D _animatedSprite;
@@ -37,6 +38,7 @@ public partial class DiscController : CharacterBody2D
 
 			// Stop movement
 			Velocity = Vector2.Zero;
+			isStationary = true;
 			isLaunched = false;
 			remainingDistance = 0f;
 			return;
@@ -57,6 +59,7 @@ public partial class DiscController : CharacterBody2D
 		totalDistance  = launchDistance;
 		Speed = launchSpeed;
 		isLaunched = true;
+		isStationary = false;
 
 		StartSpin();
 	}

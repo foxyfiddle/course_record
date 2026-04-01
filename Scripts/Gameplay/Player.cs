@@ -13,6 +13,7 @@ public partial class Player : CharacterBody2D
 	[Export] private float discSpeed = 500f;
 
 	private bool isCharging = false;
+	private bool hasDisc = true;
 	private float currectLaunchPower = 0f;
 
 	// variables for player movement
@@ -32,7 +33,10 @@ public partial class Player : CharacterBody2D
 		return;
 
 	if (mouseEvent.Pressed)
-		StartCharging();
+		if (hasDisc)
+			StartCharging();
+		else
+			GD.Print("No disc to throw!");
 	else
 		ReleaseThrow();
 }
@@ -90,6 +94,7 @@ public partial class Player : CharacterBody2D
 			return;
 
 		isCharging = false;
+		hasDisc = false;
 		ThrowDisc(currectLaunchPower);
 	}
 
@@ -104,5 +109,19 @@ public partial class Player : CharacterBody2D
 		GetParent().AddChild(discInstance);
 
 		discInstance.Launch(direction, launchPower, discSpeed);
+	}
+
+	// player pickup logic
+	void _on_area_2d_body_entered(Node body)
+	{
+		GD.Print("Body entered: " + body.Name);
+		if (body is DiscController disc 
+			&& !hasDisc
+			&& disc.isStationary == true)
+		{
+			hasDisc = true;
+			disc.QueueFree();
+			GD.Print("Disc picked up!");
+		}
 	}
 }

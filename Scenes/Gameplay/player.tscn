@@ -6,6 +6,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7aclg"]
 size = Vector2(51, 47)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wa8f8"]
+size = Vector2(57, 57)
+
 [node name="Player" type="CharacterBody2D" unique_id=117549667]
 collision_mask = 4
 script = ExtResource("1_ilvae")
@@ -25,3 +28,12 @@ rotation_smoothing_enabled = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1538590664]
 position = Vector2(28.5, 28.5)
 shape = SubResource("RectangleShape2D_7aclg")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=430983187]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1382206986]
+position = Vector2(28.5, 28.5)
+shape = SubResource("RectangleShape2D_wa8f8")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
