@@ -1,13 +1,23 @@
 [gd_scene format=3 uid="uid://b0j1kivs23ull"]
 
 [ext_resource type="Script" uid="uid://beh7x33aljbko" path="res://Scripts/Gameplay/BasketArea2d.cs" id="1_ca1mq"]
+[ext_resource type="Texture2D" uid="uid://v6ev7yj6pcvt" path="res://Scenes/Environment/basket.png" id="2_gl0yt"]
+[ext_resource type="Texture2D" uid="uid://btwjn22rgrok" path="res://Scenes/Environment/pole.png" id="2_oaw1e"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oeds7"]
-radius = 47.0
-height = 154.0
+radius = 34.0
+height = 92.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ca1mq"]
-size = Vector2(19, 20)
+size = Vector2(94, 51)
+
+[sub_resource type="Animation" id="Animation_oaw1e"]
+resource_name = "score"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ukbs6"]
+_data = {
+&"score": SubResource("Animation_oaw1e")
+}
 
 [node name="Basket" type="StaticBody2D" unique_id=301990488]
 collision_layer = 8
@@ -18,31 +28,32 @@ collision_mask = 2
 script = ExtResource("1_ca1mq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ScoreArea" unique_id=115599436]
-z_index = 1
-position = Vector2(45, 63)
+z_index = 17
+position = Vector2(47, 72)
 shape = SubResource("CapsuleShape2D_oeds7")
 
 [node name="Hitbox" type="CollisionShape2D" parent="." unique_id=301661426]
-position = Vector2(44.5, 136)
+z_index = 17
+position = Vector2(47, 116.5)
 shape = SubResource("RectangleShape2D_ca1mq")
 
 [node name="BackVisuals" type="Node2D" parent="." unique_id=1356119412]
 z_index = 5
 
-[node name="ColorRect2" type="ColorRect" parent="BackVisuals" unique_id=705800657]
-offset_left = 35.0
-offset_top = 130.0
-offset_right = 54.0
-offset_bottom = 255.0
+[node name="Sprite2D" type="Sprite2D" parent="BackVisuals" unique_id=454213253]
+position = Vector2(46, 159)
+scale = Vector2(0.14430897, 0.14430897)
+texture = ExtResource("2_oaw1e")
 
 [node name="FrontVisuals" type="Node2D" parent="." unique_id=207159760]
 z_index = 15
 
-[node name="ColorRect" type="ColorRect" parent="FrontVisuals" unique_id=1625601264]
-z_index = 5
-offset_top = 2.0
-offset_right = 92.0
-offset_bottom = 132.58064
-color = Color(0.84010637, 0.20696613, 0, 1)
+[node name="Sprite2D" type="Sprite2D" parent="FrontVisuals" unique_id=672940960]
+position = Vector2(46.930546, 69.18753)
+scale = Vector2(0.14990272, 0.1644455)
+texture = ExtResource("2_gl0yt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1668069264]
+libraries/ = SubResource("AnimationLibrary_ukbs6")
 
 [connection signal="body_entered" from="ScoreArea" to="ScoreArea" method="_on_body_entered"]
