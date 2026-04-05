@@ -17,12 +17,21 @@ public partial class Player : CharacterBody2D
 	private float currectLaunchPower = 0f;
 
 	// variables for player movement
-	[Export] private float MaxSpeed = 200f;
+	[Export] public float MaxSpeed = 200f;
 	[Export] private float Acceleration = 500f;
 	[Export] private float Friction = 600f;
 	private Vector2 _inputDirection = Vector2.Zero;
 	private bool canMove = false;
 
+	// camera node
+	private CameraController _camera;
+
+	// 
+	public override void _Ready()
+	{
+		_camera = GetNode<CameraController>("../Camera2D");
+
+	}
 
 	// player input handling
 	public override void _Input(InputEvent @event)
@@ -112,10 +121,12 @@ public partial class Player : CharacterBody2D
 
 		var discInstance = DiscScene.Instantiate<DiscController>();
 		discInstance.GlobalPosition = GlobalPosition;
+		discInstance.SetCamera(_camera);
 		
 		GetParent().AddChild(discInstance);
 
 		discInstance.Launch(direction, launchPower, discSpeed);
+		_camera.FollowDisc(discInstance);
 	}
 
 	// player pickup logic

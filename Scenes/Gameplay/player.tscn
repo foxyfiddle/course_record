@@ -20,12 +20,6 @@ offset_right = 57.0
 offset_bottom = 132.0
 color = Color(0.07450981, 0.039215688, 1, 1)
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1967572793]
-position = Vector2(28, -338)
-zoom = Vector2(0.595, 0.595)
-position_smoothing_enabled = true
-rotation_smoothing_enabled = true
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1538590664]
 position = Vector2(28.5, 70)
 shape = SubResource("RectangleShape2D_7aclg")
